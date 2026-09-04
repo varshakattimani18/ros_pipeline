@@ -25,6 +25,7 @@ setup(
     entry_points={
         'console_scripts': [
             'camera_node = drone_pipeline.camera_node:main',
+            'detection_node = drone_pipeline.detection_node:main',
         ],
     },
 )
