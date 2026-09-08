@@ -28,8 +28,10 @@ setup(
             'detection_node = drone_pipeline.detection_node:main',
             'mock_camera_node = drone_pipeline.mock_camera_node:main',
             'geotag_node = drone_pipeline.geotag_node:main',
-            'mission_control_node = drone_pipeline.mission_control_node:main'
+            'mission_control_node = drone_pipeline.mission_control_node:main',
             'fusion_node = drone_pipeline.fusion_node:main',
+            'payload_control_node = drone_pipeline.payload_control_node:main',
+
 
         ],
     },

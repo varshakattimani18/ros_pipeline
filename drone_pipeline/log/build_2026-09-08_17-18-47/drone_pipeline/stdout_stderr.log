@@ -1,0 +1,55 @@
+running egg_info
+creating build/drone_pipeline/drone_pipeline.egg-info
+writing build/drone_pipeline/drone_pipeline.egg-info/PKG-INFO
+writing dependency_links to build/drone_pipeline/drone_pipeline.egg-info/dependency_links.txt
+writing entry points to build/drone_pipeline/drone_pipeline.egg-info/entry_points.txt
+writing requirements to build/drone_pipeline/drone_pipeline.egg-info/requires.txt
+writing top-level names to build/drone_pipeline/drone_pipeline.egg-info/top_level.txt
+writing manifest file 'build/drone_pipeline/drone_pipeline.egg-info/SOURCES.txt'
+reading manifest file 'build/drone_pipeline/drone_pipeline.egg-info/SOURCES.txt'
+writing manifest file 'build/drone_pipeline/drone_pipeline.egg-info/SOURCES.txt'
+running build
+running build_py
+creating /home/varsha/drone_ws/src/ros_pipeline/drone_pipeline/build/drone_pipeline/build/lib/drone_pipeline
+copying drone_pipeline/mock_camera_node.py -> /home/varsha/drone_ws/src/ros_pipeline/drone_pipeline/build/drone_pipeline/build/lib/drone_pipeline
+copying drone_pipeline/__init__.py -> /home/varsha/drone_ws/src/ros_pipeline/drone_pipeline/build/drone_pipeline/build/lib/drone_pipeline
+copying drone_pipeline/payload_control_node.py -> /home/varsha/drone_ws/src/ros_pipeline/drone_pipeline/build/drone_pipeline/build/lib/drone_pipeline
+copying drone_pipeline/camera_node.py -> /home/varsha/drone_ws/src/ros_pipeline/drone_pipeline/build/drone_pipeline/build/lib/drone_pipeline
+copying drone_pipeline/mission_control_node.py -> /home/varsha/drone_ws/src/ros_pipeline/drone_pipeline/build/drone_pipeline/build/lib/drone_pipeline
+copying drone_pipeline/detection_node.py -> /home/varsha/drone_ws/src/ros_pipeline/drone_pipeline/build/drone_pipeline/build/lib/drone_pipeline
+copying drone_pipeline/geotag_node.py -> /home/varsha/drone_ws/src/ros_pipeline/drone_pipeline/build/drone_pipeline/build/lib/drone_pipeline
+copying drone_pipeline/fusion_node.py -> /home/varsha/drone_ws/src/ros_pipeline/drone_pipeline/build/drone_pipeline/build/lib/drone_pipeline
+running install
+running install_lib
+creating /home/varsha/drone_ws/src/ros_pipeline/drone_pipeline/install/drone_pipeline/lib/python3.10/site-packages/drone_pipeline
+copying /home/varsha/drone_ws/src/ros_pipeline/drone_pipeline/build/drone_pipeline/build/lib/drone_pipeline/mock_camera_node.py -> /home/varsha/drone_ws/src/ros_pipeline/drone_pipeline/install/drone_pipeline/lib/python3.10/site-packages/drone_pipeline
+copying /home/varsha/drone_ws/src/ros_pipeline/drone_pipeline/build/drone_pipeline/build/lib/drone_pipeline/__init__.py -> /home/varsha/drone_ws/src/ros_pipeline/drone_pipeline/install/drone_pipeline/lib/python3.10/site-packages/drone_pipeline
+copying /home/varsha/drone_ws/src/ros_pipeline/drone_pipeline/build/drone_pipeline/build/lib/drone_pipeline/payload_control_node.py -> /home/varsha/drone_ws/src/ros_pipeline/drone_pipeline/install/drone_pipeline/lib/python3.10/site-packages/drone_pipeline
+copying /home/varsha/drone_ws/src/ros_pipeline/drone_pipeline/build/drone_pipeline/build/lib/drone_pipeline/camera_node.py -> /home/varsha/drone_ws/src/ros_pipeline/drone_pipeline/install/drone_pipeline/lib/python3.10/site-packages/drone_pipeline
+copying /home/varsha/drone_ws/src/ros_pipeline/drone_pipeline/build/drone_pipeline/build/lib/drone_pipeline/mission_control_node.py -> /home/varsha/drone_ws/src/ros_pipeline/drone_pipeline/install/drone_pipeline/lib/python3.10/site-packages/drone_pipeline
+copying /home/varsha/drone_ws/src/ros_pipeline/drone_pipeline/build/drone_pipeline/build/lib/drone_pipeline/detection_node.py -> /home/varsha/drone_ws/src/ros_pipeline/drone_pipeline/install/drone_pipeline/lib/python3.10/site-packages/drone_pipeline
+copying /home/varsha/drone_ws/src/ros_pipeline/drone_pipeline/build/drone_pipeline/build/lib/drone_pipeline/geotag_node.py -> /home/varsha/drone_ws/src/ros_pipeline/drone_pipeline/install/drone_pipeline/lib/python3.10/site-packages/drone_pipeline
+copying /home/varsha/drone_ws/src/ros_pipeline/drone_pipeline/build/drone_pipeline/build/lib/drone_pipeline/fusion_node.py -> /home/varsha/drone_ws/src/ros_pipeline/drone_pipeline/install/drone_pipeline/lib/python3.10/site-packages/drone_pipeline
+byte-compiling /home/varsha/drone_ws/src/ros_pipeline/drone_pipeline/install/drone_pipeline/lib/python3.10/site-packages/drone_pipeline/mock_camera_node.py to mock_camera_node.cpython-310.pyc
+byte-compiling /home/varsha/drone_ws/src/ros_pipeline/drone_pipeline/install/drone_pipeline/lib/python3.10/site-packages/drone_pipeline/__init__.py to __init__.cpython-310.pyc
+byte-compiling /home/varsha/drone_ws/src/ros_pipeline/drone_pipeline/install/drone_pipeline/lib/python3.10/site-packages/drone_pipeline/payload_control_node.py to payload_control_node.cpython-310.pyc
+byte-compiling /home/varsha/drone_ws/src/ros_pipeline/drone_pipeline/install/drone_pipeline/lib/python3.10/site-packages/drone_pipeline/camera_node.py to camera_node.cpython-310.pyc
+byte-compiling /home/varsha/drone_ws/src/ros_pipeline/drone_pipeline/install/drone_pipeline/lib/python3.10/site-packages/drone_pipeline/mission_control_node.py to mission_control_node.cpython-310.pyc
+byte-compiling /home/varsha/drone_ws/src/ros_pipeline/drone_pipeline/install/drone_pipeline/lib/python3.10/site-packages/drone_pipeline/detection_node.py to detection_node.cpython-310.pyc
+byte-compiling /home/varsha/drone_ws/src/ros_pipeline/drone_pipeline/install/drone_pipeline/lib/python3.10/site-packages/drone_pipeline/geotag_node.py to geotag_node.cpython-310.pyc
+byte-compiling /home/varsha/drone_ws/src/ros_pipeline/drone_pipeline/install/drone_pipeline/lib/python3.10/site-packages/drone_pipeline/fusion_node.py to fusion_node.cpython-310.pyc
+running install_data
+creating /home/varsha/drone_ws/src/ros_pipeline/drone_pipeline/install/drone_pipeline/share/ament_index/resource_index/packages
+copying resource/drone_pipeline -> /home/varsha/drone_ws/src/ros_pipeline/drone_pipeline/install/drone_pipeline/share/ament_index/resource_index/packages
+copying package.xml -> /home/varsha/drone_ws/src/ros_pipeline/drone_pipeline/install/drone_pipeline/share/drone_pipeline
+running install_egg_info
+Copying build/drone_pipeline/drone_pipeline.egg-info to /home/varsha/drone_ws/src/ros_pipeline/drone_pipeline/install/drone_pipeline/lib/python3.10/site-packages/drone_pipeline-0.0.0-py3.10.egg-info
+running install_scripts
+Installing camera_node script to /home/varsha/drone_ws/src/ros_pipeline/drone_pipeline/install/drone_pipeline/lib/drone_pipeline
+Installing detection_node script to /home/varsha/drone_ws/src/ros_pipeline/drone_pipeline/install/drone_pipeline/lib/drone_pipeline
+Installing fusion_node script to /home/varsha/drone_ws/src/ros_pipeline/drone_pipeline/install/drone_pipeline/lib/drone_pipeline
+Installing geotag_node script to /home/varsha/drone_ws/src/ros_pipeline/drone_pipeline/install/drone_pipeline/lib/drone_pipeline
+Installing mission_control_node script to /home/varsha/drone_ws/src/ros_pipeline/drone_pipeline/install/drone_pipeline/lib/drone_pipeline
+Installing mock_camera_node script to /home/varsha/drone_ws/src/ros_pipeline/drone_pipeline/install/drone_pipeline/lib/drone_pipeline
+Installing payload_control_node script to /home/varsha/drone_ws/src/ros_pipeline/drone_pipeline/install/drone_pipeline/lib/drone_pipeline
+writing list of installed files to '/home/varsha/drone_ws/src/ros_pipeline/drone_pipeline/build/drone_pipeline/install.log'

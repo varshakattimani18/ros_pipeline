@@ -1,0 +1,91 @@
+[0.069s] DEBUG:colcon:Command line arguments: ['/usr/bin/colcon', 'build', '--packages-select', 'drone_pipeline']
+[0.070s] DEBUG:colcon:Parsed command line arguments: Namespace(log_base=None, log_level=None, verb_name='build', build_base='build', install_base='install', merge_install=False, symlink_install=False, test_result_base=None, continue_on_error=False, executor='parallel', parallel_workers=12, event_handlers=None, ignore_user_meta=False, metas=['./colcon.meta'], base_paths=['.'], packages_ignore=None, packages_ignore_regex=None, paths=None, packages_up_to=None, packages_up_to_regex=None, packages_above=None, packages_above_and_dependencies=None, packages_above_depth=None, packages_select_by_dep=None, packages_skip_by_dep=None, packages_skip_up_to=None, packages_select_build_failed=False, packages_skip_build_finished=False, packages_select_test_failures=False, packages_skip_test_passed=False, packages_select=['drone_pipeline'], packages_skip=None, packages_select_regex=None, packages_skip_regex=None, packages_start=None, packages_end=None, allow_overriding=[], cmake_args=None, cmake_target=None, cmake_target_skip_unavailable=False, cmake_clean_cache=False, cmake_clean_first=False, cmake_force_configure=False, ament_cmake_args=None, catkin_cmake_args=None, catkin_skip_building_tests=False, mixin_files=None, mixin=None, verb_parser=<colcon_mixin.mixin.mixin_argument.MixinArgumentDecorator object at 0x7e1de20ad3c0>, verb_extension=<colcon_core.verb.build.BuildVerb object at 0x7e1de20ace50>, main=<bound method BuildVerb.main of <colcon_core.verb.build.BuildVerb object at 0x7e1de20ace50>>, mixin_verb=('build',))
+[0.097s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) check parameters
+[0.097s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) check parameters
+[0.097s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) check parameters
+[0.097s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) check parameters
+[0.097s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) discover
+[0.097s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) discover
+[0.097s] INFO:colcon.colcon_core.package_discovery:Crawling recursively for packages in '/home/varsha/drone_ws/src/ros_pipeline/drone_pipeline'
+[0.097s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ignore', 'ignore_ament_install']
+[0.097s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore'
+[0.097s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore_ament_install'
+[0.097s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_pkg']
+[0.097s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_pkg'
+[0.097s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_meta']
+[0.097s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_meta'
+[0.097s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ros']
+[0.097s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ros'
+[0.118s] DEBUG:colcon.colcon_core.package_identification:Package '.' with type 'ros.ament_python' and name 'drone_pipeline'
+[0.118s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) using defaults
+[0.118s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) discover
+[0.118s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) using defaults
+[0.118s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) discover
+[0.119s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) using defaults
+[0.131s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) check parameters
+[0.131s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) discover
+[0.132s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 2 installed packages in /home/varsha/drone_ws/install
+[0.133s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 280 installed packages in /opt/ros/humble
+[0.134s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) using defaults
+[0.162s] Level 5:colcon.colcon_core.verb:set package 'drone_pipeline' build argument 'cmake_args' from command line to 'None'
+[0.162s] Level 5:colcon.colcon_core.verb:set package 'drone_pipeline' build argument 'cmake_target' from command line to 'None'
+[0.162s] Level 5:colcon.colcon_core.verb:set package 'drone_pipeline' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.162s] Level 5:colcon.colcon_core.verb:set package 'drone_pipeline' build argument 'cmake_clean_cache' from command line to 'False'
+[0.162s] Level 5:colcon.colcon_core.verb:set package 'drone_pipeline' build argument 'cmake_clean_first' from command line to 'False'
+[0.162s] Level 5:colcon.colcon_core.verb:set package 'drone_pipeline' build argument 'cmake_force_configure' from command line to 'False'
+[0.162s] Level 5:colcon.colcon_core.verb:set package 'drone_pipeline' build argument 'ament_cmake_args' from command line to 'None'
+[0.162s] Level 5:colcon.colcon_core.verb:set package 'drone_pipeline' build argument 'catkin_cmake_args' from command line to 'None'
+[0.162s] Level 5:colcon.colcon_core.verb:set package 'drone_pipeline' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.162s] DEBUG:colcon.colcon_core.verb:Building package 'drone_pipeline' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/varsha/drone_ws/src/ros_pipeline/drone_pipeline/build/drone_pipeline', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/varsha/drone_ws/src/ros_pipeline/drone_pipeline/install/drone_pipeline', 'merge_install': False, 'path': '/home/varsha/drone_ws/src/ros_pipeline/drone_pipeline', 'symlink_install': False, 'test_result_base': None}
+[0.162s] INFO:colcon.colcon_core.executor:Executing jobs using 'parallel' executor
+[0.163s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete
+[0.163s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/home/varsha/drone_ws/src/ros_pipeline/drone_pipeline' with build type 'ament_python'
+[0.163s] Level 1:colcon.colcon_core.shell:create_environment_hook('drone_pipeline', 'ament_prefix_path')
+[0.165s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_core.shell.bat': Not used on non-Windows systems
+[0.165s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/varsha/drone_ws/src/ros_pipeline/drone_pipeline/install/drone_pipeline/share/drone_pipeline/hook/ament_prefix_path.ps1'
+[0.165s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/varsha/drone_ws/src/ros_pipeline/drone_pipeline/install/drone_pipeline/share/drone_pipeline/hook/ament_prefix_path.dsv'
+[0.165s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/varsha/drone_ws/src/ros_pipeline/drone_pipeline/install/drone_pipeline/share/drone_pipeline/hook/ament_prefix_path.sh'
+[0.166s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.166s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.314s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/home/varsha/drone_ws/src/ros_pipeline/drone_pipeline'
+[0.314s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.314s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.585s] DEBUG:colcon.colcon_core.task.python.build:Available setuptools commands: saveopts, symlink_data, build_clib, build_ext, update_catalog, rotate, compile_catalog, editable_wheel, bdist_dumb, bdist, install_scripts, install, init_catalog, easy_install, bdist_wheel, develop, install_data, extract_messages, bdist_rpm, install_headers, build_scripts, dist_info, install_lib, check, sdist, install_egg_info, alias, build, build_py, setopt, clean, bdist_egg, egg_info
+[0.589s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/varsha/drone_ws/src/ros_pipeline/drone_pipeline': PYTHONPATH=/home/varsha/drone_ws/src/ros_pipeline/drone_pipeline/build/drone_pipeline/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/varsha/drone_ws/src/ros_pipeline/drone_pipeline/install/drone_pipeline/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base build/drone_pipeline build --build-base /home/varsha/drone_ws/src/ros_pipeline/drone_pipeline/build/drone_pipeline/build install --record /home/varsha/drone_ws/src/ros_pipeline/drone_pipeline/build/drone_pipeline/install.log --install-scripts $base/lib/drone_pipeline --single-version-externally-managed install_data
+[0.950s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/varsha/drone_ws/src/ros_pipeline/drone_pipeline' returned '0': PYTHONPATH=/home/varsha/drone_ws/src/ros_pipeline/drone_pipeline/build/drone_pipeline/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/varsha/drone_ws/src/ros_pipeline/drone_pipeline/install/drone_pipeline/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base build/drone_pipeline build --build-base /home/varsha/drone_ws/src/ros_pipeline/drone_pipeline/build/drone_pipeline/build install --record /home/varsha/drone_ws/src/ros_pipeline/drone_pipeline/build/drone_pipeline/install.log --install-scripts $base/lib/drone_pipeline --single-version-externally-managed install_data
+[0.951s] Level 1:colcon.colcon_core.environment:checking '/home/varsha/drone_ws/src/ros_pipeline/drone_pipeline/install/drone_pipeline' for CMake module files
+[0.951s] Level 1:colcon.colcon_core.environment:checking '/home/varsha/drone_ws/src/ros_pipeline/drone_pipeline/install/drone_pipeline' for CMake config files
+[0.951s] Level 1:colcon.colcon_core.environment:checking '/home/varsha/drone_ws/src/ros_pipeline/drone_pipeline/install/drone_pipeline/lib'
+[0.952s] Level 1:colcon.colcon_core.environment:checking '/home/varsha/drone_ws/src/ros_pipeline/drone_pipeline/install/drone_pipeline/bin'
+[0.952s] Level 1:colcon.colcon_core.environment:checking '/home/varsha/drone_ws/src/ros_pipeline/drone_pipeline/install/drone_pipeline/lib/pkgconfig/drone_pipeline.pc'
+[0.952s] Level 1:colcon.colcon_core.environment:checking '/home/varsha/drone_ws/src/ros_pipeline/drone_pipeline/install/drone_pipeline/lib/python3.10/site-packages'
+[0.952s] Level 1:colcon.colcon_core.shell:create_environment_hook('drone_pipeline', 'pythonpath')
+[0.952s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/varsha/drone_ws/src/ros_pipeline/drone_pipeline/install/drone_pipeline/share/drone_pipeline/hook/pythonpath.ps1'
+[0.952s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/varsha/drone_ws/src/ros_pipeline/drone_pipeline/install/drone_pipeline/share/drone_pipeline/hook/pythonpath.dsv'
+[0.952s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/varsha/drone_ws/src/ros_pipeline/drone_pipeline/install/drone_pipeline/share/drone_pipeline/hook/pythonpath.sh'
+[0.953s] Level 1:colcon.colcon_core.environment:checking '/home/varsha/drone_ws/src/ros_pipeline/drone_pipeline/install/drone_pipeline/bin'
+[0.953s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(drone_pipeline)
+[0.953s] INFO:colcon.colcon_core.shell:Creating package script '/home/varsha/drone_ws/src/ros_pipeline/drone_pipeline/install/drone_pipeline/share/drone_pipeline/package.ps1'
+[0.954s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/varsha/drone_ws/src/ros_pipeline/drone_pipeline/install/drone_pipeline/share/drone_pipeline/package.dsv'
+[0.954s] INFO:colcon.colcon_core.shell:Creating package script '/home/varsha/drone_ws/src/ros_pipeline/drone_pipeline/install/drone_pipeline/share/drone_pipeline/package.sh'
+[0.954s] INFO:colcon.colcon_core.shell:Creating package script '/home/varsha/drone_ws/src/ros_pipeline/drone_pipeline/install/drone_pipeline/share/drone_pipeline/package.bash'
+[0.955s] INFO:colcon.colcon_core.shell:Creating package script '/home/varsha/drone_ws/src/ros_pipeline/drone_pipeline/install/drone_pipeline/share/drone_pipeline/package.zsh'
+[0.955s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/varsha/drone_ws/src/ros_pipeline/drone_pipeline/install/drone_pipeline/share/colcon-core/packages/drone_pipeline)
+[0.955s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:closing loop
+[0.956s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:loop closed
+[0.956s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete finished with '0'
+[0.956s] DEBUG:colcon.colcon_core.event_reactor:joining thread
+[0.961s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.terminal_notifier': Not used on non-Darwin systems
+[0.961s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.win32': Not used on non-Windows systems
+[0.961s] INFO:colcon.colcon_notification.desktop_notification:Sending desktop notification using 'notify2'
+[0.976s] DEBUG:colcon.colcon_core.event_reactor:joined thread
+[0.977s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/varsha/drone_ws/src/ros_pipeline/drone_pipeline/install/local_setup.ps1'
+[0.978s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/varsha/drone_ws/src/ros_pipeline/drone_pipeline/install/_local_setup_util_ps1.py'
+[0.980s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/varsha/drone_ws/src/ros_pipeline/drone_pipeline/install/setup.ps1'
+[0.981s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/varsha/drone_ws/src/ros_pipeline/drone_pipeline/install/local_setup.sh'
+[0.982s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/varsha/drone_ws/src/ros_pipeline/drone_pipeline/install/_local_setup_util_sh.py'
+[0.982s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/varsha/drone_ws/src/ros_pipeline/drone_pipeline/install/setup.sh'
+[0.984s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/varsha/drone_ws/src/ros_pipeline/drone_pipeline/install/local_setup.bash'
+[0.984s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/varsha/drone_ws/src/ros_pipeline/drone_pipeline/install/setup.bash'
+[0.986s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/varsha/drone_ws/src/ros_pipeline/drone_pipeline/install/local_setup.zsh'
+[0.986s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/varsha/drone_ws/src/ros_pipeline/drone_pipeline/install/setup.zsh'
