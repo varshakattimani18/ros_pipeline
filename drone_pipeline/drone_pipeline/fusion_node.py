@@ -71,6 +71,7 @@ class FusionNode(Node):
                 clusters.append([det])
 
         targets = []
+                targets = []
         for i, cluster in enumerate(clusters):
             best = max(cluster, key=lambda d: d.confidence)
             t = Target()
@@ -81,8 +82,13 @@ class FusionNode(Node):
             t.source_drone_id = best.drone_id
             targets.append(t)
 
-        return targets
+        # Cap at 4 payloads — keep highest-confidence targets if more were found
+        targets.sort(key=lambda t: t.confidence, reverse=True)
+        targets = targets[:4]
+        for i, t in enumerate(targets):
+            t.target_id = i  # reassign sequential IDs 0-3 after capping
 
+        return targets
     def haversine_m(self, lat1, lon1, lat2, lon2):
         R = 6371000.0
         phi1, phi2 = math.radians(lat1), math.radians(lat2)

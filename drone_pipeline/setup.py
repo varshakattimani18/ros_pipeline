@@ -31,8 +31,8 @@ setup(
             'mission_control_node = drone_pipeline.mission_control_node:main',
             'fusion_node = drone_pipeline.fusion_node:main',
             'payload_control_node = drone_pipeline.payload_control_node:main',
-
-
+            'nav_delivery_node = drone_pipeline.nav_delivery_node:main',
+            'csv_logger_node = drone_pipeline.csv_logger_node:main',
         ],
     },
 )
