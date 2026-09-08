@@ -3,22 +3,30 @@ from rclpy.node import Node
 from sensor_msgs.msg import Image
 from cv_bridge import CvBridge
 from ultralytics import YOLO
+from drone_msgs.msg import RawDetection
+import os
+import cv2
 
 MODEL_PATH = '/home/varsha/drone_ws/models/best.pt'
 CONFIDENCE_THRESHOLD = 0.5
+SAVE_DIR = '/home/varsha/drone_ws/detections'
 
 class DetectionNode(Node):
     def __init__(self):
         super().__init__('detection_node')
+        os.makedirs(SAVE_DIR, exist_ok=True)
         self.bridge = CvBridge()
         self.get_logger().info(f'Loading YOLO model from {MODEL_PATH}')
         self.model = YOLO(MODEL_PATH)
         self.subscription = self.create_subscription(
             Image, '/scout/image_raw', self.image_callback, 10)
+        self.publisher_ = self.create_publisher(RawDetection, '/scout/raw_detections', 10)
+        self.detection_counter = 0
         self.get_logger().info('Detection node started, subscribed to /scout/image_raw')
 
     def image_callback(self, msg):
         frame = self.bridge.imgmsg_to_cv2(msg, desired_encoding='bgr8')
+        height, width = frame.shape[:2]
         results = self.model(frame, verbose=False)[0]
 
         for box in results.boxes:
@@ -30,11 +38,27 @@ class DetectionNode(Node):
             x1, y1, x2, y2 = box.xyxy[0].tolist()
             center_x = (x1 + x2) / 2
             center_y = (y1 + y2) / 2
+
+            det_id = self.detection_counter
+            image_path = os.path.join(SAVE_DIR, f'detection_{det_id}.jpg')
+            cv2.imwrite(image_path, frame)
+
+            det_msg = RawDetection()
+            det_msg.header = msg.header
+            det_msg.detection_id = det_id
+            det_msg.pixel_x = center_x
+            det_msg.pixel_y = center_y
+            det_msg.confidence = confidence
+            det_msg.class_name = class_name
+            det_msg.image_width = width
+            det_msg.image_height = height
+            self.publisher_.publish(det_msg)
+
             self.get_logger().info(
-                f'Detected {class_name} at pixel ({center_x:.0f}, {center_y:.0f}) '
-                f'confidence={confidence:.2f}'
+                f'Published detection #{det_id}: {class_name} at ({center_x:.0f}, {center_y:.0f}) '
+                f'confidence={confidence:.2f}, saved {image_path}'
             )
-            # TODO: publish this to geotag_node instead of just logging
+            self.detection_counter += 1
 
 def main(args=None):
     rclpy.init(args=args)
