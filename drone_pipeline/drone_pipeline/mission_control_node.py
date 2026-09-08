@@ -8,23 +8,30 @@ class MissionControlNode(Node):
     def __init__(self):
         super().__init__('mission_control_node')
 
+        self.declare_parameter('drone_id', 'scout')
+        self.drone_id = self.get_parameter('drone_id').get_parameter_value().string_value
+
         self.connected = False
         self.armed = False
         self.mode_set = False
         self.total_waypoints = None
         self.scan_complete_sent = False
 
+        scan_complete_topic = f'/{self.drone_id}/scan_complete'
+
         self.create_subscription(State, '/mavros/state', self.state_callback, 10)
         self.create_subscription(WaypointList, '/mavros/mission/waypoints', self.waypoints_callback, 10)
         self.create_subscription(WaypointReached, '/mavros/mission/reached', self.reached_callback, 10)
 
-        self.scan_complete_pub = self.create_publisher(Bool, '/scout/scan_complete', 10)
+        self.scan_complete_pub = self.create_publisher(Bool, scan_complete_topic, 10)
 
         self.arm_client = self.create_client(CommandBool, '/mavros/cmd/arming')
         self.mode_client = self.create_client(SetMode, '/mavros/set_mode')
 
         self.timer = self.create_timer(2.0, self.startup_sequence)
-        self.get_logger().info('Mission control node started, waiting for FCU connection')
+        self.get_logger().info(
+            f'Mission control node started for "{self.drone_id}", waiting for FCU connection'
+        )
 
     def state_callback(self, msg):
         self.connected = msg.connected
@@ -32,25 +39,23 @@ class MissionControlNode(Node):
 
     def waypoints_callback(self, msg):
         self.total_waypoints = len(msg.waypoints)
-        self.get_logger().info(f'Mission loaded: {self.total_waypoints} waypoints')
+        self.get_logger().info(f'[{self.drone_id}] Mission loaded: {self.total_waypoints} waypoints')
 
     def reached_callback(self, msg):
-        self.get_logger().info(f'Reached waypoint #{msg.wp_seq}')
+        self.get_logger().info(f'[{self.drone_id}] Reached waypoint #{msg.wp_seq}')
         if self.total_waypoints is not None and msg.wp_seq == self.total_waypoints - 1:
             if not self.scan_complete_sent:
                 self.scan_complete_pub.publish(Bool(data=True))
                 self.scan_complete_sent = True
-                self.get_logger().info('Final waypoint reached — published scan_complete')
+                self.get_logger().info(f'[{self.drone_id}] Final waypoint reached — published scan_complete')
 
     def startup_sequence(self):
         if not self.connected:
-            self.get_logger().info('Waiting for FCU connection...')
+            self.get_logger().info(f'[{self.drone_id}] Waiting for FCU connection...')
             return
-
         if not self.armed:
             self.arm_drone()
             return
-
         if not self.mode_set:
             self.set_auto_mode()
             return
@@ -66,9 +71,9 @@ class MissionControlNode(Node):
     def arm_response(self, future):
         result = future.result()
         if result and result.success:
-            self.get_logger().info('Arming command accepted')
+            self.get_logger().info(f'[{self.drone_id}] Arming command accepted')
         else:
-            self.get_logger().warn('Arming command failed, will retry')
+            self.get_logger().warn(f'[{self.drone_id}] Arming command failed, will retry')
 
     def set_auto_mode(self):
         if not self.mode_client.wait_for_service(timeout_sec=1.0):
@@ -82,9 +87,9 @@ class MissionControlNode(Node):
         result = future.result()
         if result and result.mode_sent:
             self.mode_set = True
-            self.get_logger().info('AUTO mode set — mission should now begin')
+            self.get_logger().info(f'[{self.drone_id}] AUTO mode set — mission should now begin')
         else:
-            self.get_logger().warn('Set mode failed, will retry')
+            self.get_logger().warn(f'[{self.drone_id}] Set mode failed, will retry')
 
 def main(args=None):
     rclpy.init(args=args)

@@ -9,20 +9,31 @@ import cv2
 
 MODEL_PATH = '/home/varsha/drone_ws/models/best.pt'
 CONFIDENCE_THRESHOLD = 0.5
-SAVE_DIR = '/home/varsha/drone_ws/detections'
 
 class DetectionNode(Node):
     def __init__(self):
         super().__init__('detection_node')
-        os.makedirs(SAVE_DIR, exist_ok=True)
+
+        self.declare_parameter('drone_id', 'scout')
+        self.drone_id = self.get_parameter('drone_id').get_parameter_value().string_value
+
+        self.save_dir = f'/home/varsha/drone_ws/detections/{self.drone_id}'
+        os.makedirs(self.save_dir, exist_ok=True)
+
         self.bridge = CvBridge()
         self.get_logger().info(f'Loading YOLO model from {MODEL_PATH}')
         self.model = YOLO(MODEL_PATH)
+
+        image_topic = f'/{self.drone_id}/image_raw'
+        detections_topic = f'/{self.drone_id}/raw_detections'
+
         self.subscription = self.create_subscription(
-            Image, '/scout/image_raw', self.image_callback, 10)
-        self.publisher_ = self.create_publisher(RawDetection, '/scout/raw_detections', 10)
+            Image, image_topic, self.image_callback, 10)
+        self.publisher_ = self.create_publisher(RawDetection, detections_topic, 10)
         self.detection_counter = 0
-        self.get_logger().info('Detection node started, subscribed to /scout/image_raw')
+        self.get_logger().info(
+            f'Detection node started for "{self.drone_id}", subscribed to {image_topic}'
+        )
 
     def image_callback(self, msg):
         frame = self.bridge.imgmsg_to_cv2(msg, desired_encoding='bgr8')
@@ -40,7 +51,7 @@ class DetectionNode(Node):
             center_y = (y1 + y2) / 2
 
             det_id = self.detection_counter
-            image_path = os.path.join(SAVE_DIR, f'detection_{det_id}.jpg')
+            image_path = os.path.join(self.save_dir, f'detection_{det_id}.jpg')
             cv2.imwrite(image_path, frame)
 
             det_msg = RawDetection()
@@ -55,8 +66,8 @@ class DetectionNode(Node):
             self.publisher_.publish(det_msg)
 
             self.get_logger().info(
-                f'Published detection #{det_id}: {class_name} at ({center_x:.0f}, {center_y:.0f}) '
-                f'confidence={confidence:.2f}, saved {image_path}'
+                f'[{self.drone_id}] Published detection #{det_id}: {class_name} '
+                f'at ({center_x:.0f}, {center_y:.0f}) confidence={confidence:.2f}'
             )
             self.detection_counter += 1
 

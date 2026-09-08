@@ -27,6 +27,9 @@ find_package(std_msgs REQUIRED)
 
 rosidl_generate_interfaces(${PROJECT_NAME}
   "msg/Detection.msg"
+  "msg/RawDetection.msg"
+  "msg/Target.msg"
+  "msg/TargetList.msg"
   DEPENDENCIES std_msgs
 )
 ament_package()
