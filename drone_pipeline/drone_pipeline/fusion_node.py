@@ -71,7 +71,6 @@ class FusionNode(Node):
                 clusters.append([det])
 
         targets = []
-                targets = []
         for i, cluster in enumerate(clusters):
             best = max(cluster, key=lambda d: d.confidence)
             t = Target()
