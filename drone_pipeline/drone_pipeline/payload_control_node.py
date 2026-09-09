@@ -18,9 +18,12 @@ SERVO_CHANNEL_MAP = {
 class PayloadControlNode(Node):
     def __init__(self):
         super().__init__('payload_control_node')
+        self.declare_parameter('drone_id', 'rudra')
+        self.drone_id = self.get_parameter('drone_id').get_parameter_value().string_value
 
-        self.command_client = self.create_client(CommandLong, '/mavros/cmd/command')
-        self.create_subscription(Int32, '/payload/trigger_drop', self.trigger_callback, 10)
+
+        self.command_client = self.create_client(CommandLong, f'/{self.drone_id}/mavros/cmd/command')
+        self.create_subscription(Int32, f'/{self.drone_id}/trigger_drop', self.trigger_callback, 10)
 
         self.get_logger().info('Payload control node started, waiting for /payload/trigger_drop')
 

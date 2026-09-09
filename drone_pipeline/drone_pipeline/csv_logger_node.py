@@ -28,10 +28,10 @@ class CsvLoggerNode(Node):
             writer = csv.writer(f)
             writer.writerow(['ros_time', 'target_id', 'latitude', 'longitude', 'confidence', 'source_drone_id'])
 
-        self.create_subscription(Detection, '/scout/detections', self.detection_callback, 10)
-        self.create_subscription(Detection, '/payload/detections', self.detection_callback, 10)
-        self.create_subscription(TargetList, '/payload/target_list', self.target_list_callback, 10)
-        self.create_subscription(Int32, '/payload/trigger_drop', self.drop_callback, 10)
+        self.create_subscription(Detection, '/flamingo/detections', self.detection_callback, 10)
+        self.create_subscription(Detection, '/rudra/detections', self.detection_callback, 10)
+        self.create_subscription(TargetList, '/rudra/target_list', self.target_list_callback, 10)
+        self.create_subscription(Int32, '/rudra/trigger_drop', self.drop_callback, 10)
 
         self.latest_targets = {}
 

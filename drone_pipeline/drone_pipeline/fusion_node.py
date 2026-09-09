@@ -15,12 +15,12 @@ class FusionNode(Node):
         self.all_detections = []
         self.fused_published = False
 
-        self.create_subscription(Bool, '/scout/scan_complete', self.scout_done_callback, 10)
-        self.create_subscription(Bool, '/payload/scan_complete', self.payload_done_callback, 10)
-        self.create_subscription(Detection, '/scout/detections', self.detection_callback, 10)
-        self.create_subscription(Detection, '/payload/detections', self.detection_callback, 10)
+        self.create_subscription(Bool, '/flamingo/scan_complete', self.scout_done_callback, 10)
+        self.create_subscription(Bool, '/rudra/scan_complete', self.payload_done_callback, 10)
+        self.create_subscription(Detection, '/flamingo/detections', self.detection_callback, 10)
+        self.create_subscription(Detection, '/rudra/detections', self.detection_callback, 10)
 
-        self.targets_pub = self.create_publisher(TargetList, '/payload/target_list', 10)
+        self.targets_pub = self.create_publisher(TargetList, '/rudra/target_list', 10)
 
         self.get_logger().info('Fusion node started, collecting detections from both drones')
 

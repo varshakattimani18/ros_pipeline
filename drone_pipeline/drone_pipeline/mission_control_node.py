@@ -8,7 +8,7 @@ class MissionControlNode(Node):
     def __init__(self):
         super().__init__('mission_control_node')
 
-        self.declare_parameter('drone_id', 'scout')
+        self.declare_parameter('drone_id', 'flamingo')
         self.drone_id = self.get_parameter('drone_id').get_parameter_value().string_value
 
         self.connected = False
@@ -17,21 +17,20 @@ class MissionControlNode(Node):
         self.total_waypoints = None
         self.scan_complete_sent = False
 
+        mavros_prefix = f'/{self.drone_id}/mavros'
         scan_complete_topic = f'/{self.drone_id}/scan_complete'
 
-        self.create_subscription(State, '/mavros/state', self.state_callback, 10)
-        self.create_subscription(WaypointList, '/mavros/mission/waypoints', self.waypoints_callback, 10)
-        self.create_subscription(WaypointReached, '/mavros/mission/reached', self.reached_callback, 10)
+        self.create_subscription(State, f'{mavros_prefix}/state', self.state_callback, 10)
+        self.create_subscription(WaypointList, f'{mavros_prefix}/mission/waypoints', self.waypoints_callback, 10)
+        self.create_subscription(WaypointReached, f'{mavros_prefix}/mission/reached', self.reached_callback, 10)
 
         self.scan_complete_pub = self.create_publisher(Bool, scan_complete_topic, 10)
 
-        self.arm_client = self.create_client(CommandBool, '/mavros/cmd/arming')
-        self.mode_client = self.create_client(SetMode, '/mavros/set_mode')
+        self.arm_client = self.create_client(CommandBool, f'{mavros_prefix}/cmd/arming')
+        self.mode_client = self.create_client(SetMode, f'{mavros_prefix}/set_mode')
 
         self.timer = self.create_timer(2.0, self.startup_sequence)
-        self.get_logger().info(
-            f'Mission control node started for "{self.drone_id}", waiting for FCU connection'
-        )
+        self.get_logger().info(f'Mission control node started for "{self.drone_id}", using {mavros_prefix}')
 
     def state_callback(self, msg):
         self.connected = msg.connected

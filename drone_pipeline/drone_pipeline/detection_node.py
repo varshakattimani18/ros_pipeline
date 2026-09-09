@@ -14,7 +14,7 @@ class DetectionNode(Node):
     def __init__(self):
         super().__init__('detection_node')
 
-        self.declare_parameter('drone_id', 'scout')
+        self.declare_parameter('drone_id', 'flamingo')
         self.drone_id = self.get_parameter('drone_id').get_parameter_value().string_value
 
         self.save_dir = f'/home/varsha/drone_ws/detections/{self.drone_id}'

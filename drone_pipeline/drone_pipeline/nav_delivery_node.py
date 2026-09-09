@@ -19,6 +19,9 @@ STATE_DONE = 'DONE'
 class NavDeliveryNode(Node):
     def __init__(self):
         super().__init__('nav_delivery_node')
+        self.declare_parameter('drone_id', 'rudra')
+        self.drone_id = self.get_parameter('drone_id').get_parameter_value().string_value
+        mavros_prefix = f'/{self.drone_id}/mavros'
 
         self.state = STATE_WAITING
         self.remaining_targets = []
@@ -28,12 +31,12 @@ class NavDeliveryNode(Node):
         self.current_alt = None
         self.guided_mode_set = False
 
-        self.create_subscription(TargetList, '/payload/target_list', self.target_list_callback, 10)
-        self.create_subscription(NavSatFix, '/mavros/global_position/global', self.gps_callback, 10)
+        self.create_subscription(TargetList, f'/{self.drone_id}/target_list', self.target_list_callback, 10)
+        self.create_subscription(NavSatFix, f'{mavros_prefix}/global_position/global', self.gps_callback, 10)
 
-        self.setpoint_pub = self.create_publisher(GlobalPositionTarget, '/mavros/setpoint_position/global', 10)
-        self.drop_pub = self.create_publisher(Int32, '/payload/trigger_drop', 10)
-        self.mode_client = self.create_client(SetMode, '/mavros/set_mode')
+        self.setpoint_pub = self.create_publisher(GlobalPositionTarget, f'{mavros_prefix}/setpoint_position/global', 10)
+        self.drop_pub = self.create_publisher(Int32, f'/{self.drone_id}/trigger_drop', 10)
+        self.mode_client = self.create_client(SetMode, f'{mavros_prefix}/set_mode')
 
         self.timer = self.create_timer(0.5, self.control_loop)
         self.get_logger().info('Nav delivery node started, waiting for target list')
